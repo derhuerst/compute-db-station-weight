@@ -12,9 +12,9 @@ const weights = {
 	nationalExp: 1,
 	national: .85,
 	regionalExp: .75,
-	regional: .65,
-	suburban: .4,
-	subway: .4,
+	regional: .6,
+	suburban: .45,
+	subway: .45,
 	ferry: .4, // todo: how large are ferries in Germany usually?
 	tram: .3,
 	bus: .25
@@ -48,7 +48,8 @@ const estimate = (id) => {
 		hafas.departures(id, {duration: 12 * 60, when: when2})
 	])
 	.then(([firstDeps, lastDeps]) => {
-		return sumOfDeps(firstDeps) + sumOfDeps(lastDeps)
+		const sum = sumOfDeps(firstDeps) + sumOfDeps(lastDeps)
+		return Math.round(sum * 10) / 10
 	})
 }
 
