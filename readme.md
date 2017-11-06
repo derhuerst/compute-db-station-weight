@@ -1,5 +1,7 @@
 # compute-db-station-weight
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/derhuerst/compute-db-station-weight.svg)](https://greenkeeper.io/)
+
 **Estimate the weight of a [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) station using departures.**
 
 [![npm version](https://img.shields.io/npm/v/compute-db-station-weight.svg)](https://www.npmjs.com/package/compute-db-station-weight)
