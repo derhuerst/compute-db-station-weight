@@ -18,7 +18,18 @@ npm install compute-db-station-weight
 ## Usage
 
 ```js
-todo
+const computeWeight = require('compute-db-station-weight')
+
+const leipzigHbf = '8010205'
+
+computeWeight(leipzigHbf)
+.then((weight) => {
+	console.log('weight of Leipzig Hbf is', weight)
+})
+```
+
+```
+weight of Leipzig Hbf is 951.3
 ```
 
 
