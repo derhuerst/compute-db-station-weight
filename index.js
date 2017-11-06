@@ -7,8 +7,6 @@ const hour = 60 * 60 * 1000
 const week = 7 * 24 * hour
 const nextMonday = () => new Date(+floor(new Date(), 'week') + week + 10 * hour)
 
-const minutesPerDay = 24 * 60
-
 // see db-hafas/lib/modes
 const weights = {
 	nationalExp: 1,
@@ -25,10 +23,7 @@ const weights = {
 // Because this estimation only takes a single day into account, it is inaccurate.
 // todo: improve it, e.g. using different days of the beak or number of lines
 const estimate = (id) => {
-	return hafas.departures(id, {
-		duration: minutesPerDay
-	})
-	.then((deps) => {
+	const sumOfDeps = (deps) => {
 		let weight = 0
 
 		for (let dep of deps) {
@@ -41,8 +36,19 @@ const estimate = (id) => {
 
 			weight += weights[p]
 		}
-
 		return weight
+	}
+
+	// Apparently, the DB API does not support querying departures for 1440 min
+	// (1 day) at once. Therefore, we split the day into two queries.
+	const when1 = nextMonday()
+	const when2 = new Date(+when1 + 12 * hour)
+	return Promise.all([
+		hafas.departures(id, {duration: 12 * 60, when: when1}),
+		hafas.departures(id, {duration: 12 * 60, when: when2})
+	])
+	.then(([firstDeps, lastDeps]) => {
+		return sumOfDeps(firstDeps) + sumOfDeps(lastDeps)
 	})
 }
 
