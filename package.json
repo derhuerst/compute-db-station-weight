@@ -1,0 +1,34 @@
+{
+	"name": "compute-db-station-weight",
+	"description": "Estimate the weight of a DB station using departures.",
+	"version": "0.1.0",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"db",
+		"deutsche bahn",
+		"public transport",
+		"transit",
+		"germany"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/compute-db-station-weight",
+	"repository": "derhuerst/compute-db-station-weight",
+	"bugs": "https://github.com/derhuerst/compute-db-station-weight/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"tape": "^4.8.0",
+		"tap-min": "^1.2.2"
+	},
+	"scripts": {
+		"test": "node test.js | tap-min",
+		"prepublishOnly": "npm test"
+	}
+}
