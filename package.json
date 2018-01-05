@@ -22,7 +22,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
-		"db-hafas": "^1.1.0",
+		"db-hafas": "^2.0.0",
 		"floordate": "^3.0.0"
 	},
 	"devDependencies": {
