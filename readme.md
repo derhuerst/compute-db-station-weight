@@ -1,6 +1,6 @@
 # compute-db-station-weight
 
-**Estimate the weight of a [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) station using departures.**
+**Estimate the weight of a [Deutsche Bahn](https://en.wikipedia.org/wiki/Deutsche_Bahn) station using departures.** A small wrapper around [hafas-estimate-station-weight](https://github.com/derhuerst/hafas-estimate-station-weight).
 
 [![npm version](https://img.shields.io/npm/v/compute-db-station-weight.svg)](https://www.npmjs.com/package/compute-db-station-weight)
 [![build status](https://img.shields.io/travis/derhuerst/compute-db-station-weight.svg)](https://travis-ci.org/derhuerst/compute-db-station-weight)

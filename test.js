@@ -2,7 +2,7 @@
 
 const test = require('tape')
 
-const computeWeight = require('.')
+const estimateWeight = require('.')
 
 const leipzigHbf = '8010205'
 const jenaPararies = '8011956'
@@ -10,8 +10,8 @@ const berzhahn = '8000921'
 
 test('Leipzig Hbf > Jena Paradies', (t) => {
 	Promise.all([
-		computeWeight(leipzigHbf),
-		computeWeight(jenaPararies)
+		estimateWeight(leipzigHbf),
+		estimateWeight(jenaPararies)
 	])
 	.then(([leipzigHbfWeight, jenaParariesWeight]) => {
 		t.ok(leipzigHbfWeight > jenaParariesWeight)
@@ -21,12 +21,10 @@ test('Leipzig Hbf > Jena Paradies', (t) => {
 })
 
 test('Berzhahn > 0', (t) => {
-	computeWeight(berzhahn)
+	estimateWeight(berzhahn)
 	.then((weight) => {
 		t.ok(weight > 0)
 		t.end()
 	})
 	.catch(t.ifError)
 })
-
-// todo

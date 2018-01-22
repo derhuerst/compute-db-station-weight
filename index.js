@@ -1,17 +1,7 @@
 'use strict'
 
-const {DateTime} = require('luxon')
 const hafas = require('db-hafas')
-
-const hour = 60 * 60 * 1000
-const week = 7 * 24 * hour
-const nextMonday = () => {
-	// beginning of next week 10 am
-	return DateTime.fromMillis(Date.now(), {
-		zone: hafas.profile.timezone,
-		locale: hafas.profile.locale
-	}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()
-}
+const createEstimate = require('hafas-estimate-station-weight')
 
 // see db-hafas/lib/modes
 const weights = {
@@ -26,37 +16,6 @@ const weights = {
 	bus: .25
 }
 
-// Because this estimation only takes a single day into account, it is inaccurate.
-// todo: improve it, e.g. using different days of the beak or number of lines
-const estimate = (id) => {
-	const sumOfDeps = (deps) => {
-		let weight = 0
-
-		for (let dep of deps) {
-			if (!dep.line || !dep.line.product) continue
-			const p = dep.line.product
-			if (!(p in weights)) {
-				console.error(p + ' has no weight associated.')
-				continue
-			}
-
-			weight += weights[p]
-		}
-		return weight
-	}
-
-	// Apparently, the DB API does not support querying departures for 1440 min
-	// (1 day) at once. Therefore, we split the day into two queries.
-	const when1 = nextMonday()
-	const when2 = new Date(+when1 + 12 * hour)
-	return Promise.all([
-		hafas.departures(id, {duration: 12 * 60, when: when1}),
-		hafas.departures(id, {duration: 12 * 60, when: when2})
-	])
-	.then(([firstDeps, lastDeps]) => {
-		const sum = sumOfDeps(firstDeps) + sumOfDeps(lastDeps)
-		return Math.round(sum * 10) / 10
-	})
-}
+const estimate = createEstimate(hafas, weights)
 
 module.exports = estimate
