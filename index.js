@@ -1,11 +1,17 @@
 'use strict'
 
+const {DateTime} = require('luxon')
 const hafas = require('db-hafas')
-const floor = require('floordate')
 
 const hour = 60 * 60 * 1000
 const week = 7 * 24 * hour
-const nextMonday = () => new Date(+floor(new Date(), 'week') + week + 10 * hour)
+const nextMonday = () => {
+	// beginning of next week 10 am
+	return DateTime.fromMillis(Date.now(), {
+		zone: hafas.profile.timezone,
+		locale: hafas.profile.locale
+	}).startOf('week').plus({weeks: 1, hours: 10}).toJSDate()
+}
 
 // see db-hafas/lib/modes
 const weights = {
