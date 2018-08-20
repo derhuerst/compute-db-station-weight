@@ -10,6 +10,8 @@ const leipzigHbf = '8010205'
 const jenaPararies = '8011956'
 const berzhahn = '8000921'
 
+const hafas = createHafas('compute-db-station-weight test')
+
 test('estimate: Leipzig Hbf > Jena Paradies', (t) => {
 	Promise.all([
 		estimate(leipzigHbf),
@@ -32,7 +34,6 @@ test('estimate: Berzhahn > 0', (t) => {
 })
 
 test('createEstimate: Leipzig Hbf > Jena Paradies', (t) => {
-	const hafas = createHafas('compute-db-station-weight test')
 	const estimate = createEstimate(hafas)
 
 	Promise.all([
