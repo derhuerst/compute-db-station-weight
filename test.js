@@ -1,6 +1,6 @@
 'use strict'
 
-const hafas = require('db-hafas')
+const createHafas = require('db-hafas')
 const test = require('tape')
 
 const estimate = require('.')
@@ -32,6 +32,7 @@ test('estimate: Berzhahn > 0', (t) => {
 })
 
 test('createEstimate: Leipzig Hbf > Jena Paradies', (t) => {
+	const hafas = createHafas('compute-db-station-weight test')
 	const estimate = createEstimate(hafas)
 
 	Promise.all([
