@@ -1,7 +1,7 @@
 {
 	"name": "compute-db-station-weight",
 	"description": "Estimate the weight of a DB station using departures.",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -21,14 +21,14 @@
 	"bugs": "https://github.com/derhuerst/compute-db-station-weight/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=6"
+		"node": ">=8"
 	},
 	"dependencies": {
-		"db-hafas": "^3.0.0",
-		"hafas-estimate-station-weight": "^1.0.2"
+		"db-hafas": "^4.0.0",
+		"hafas-estimate-station-weight": "^2.0.0"
 	},
 	"devDependencies": {
-		"tap-min": "^1.2.2",
+		"tap-min": "^2.0.0",
 		"tape": "^4.8.0"
 	},
 	"scripts": {
