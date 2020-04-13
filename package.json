@@ -24,7 +24,7 @@
 		"node": ">=8"
 	},
 	"dependencies": {
-		"db-hafas": "^4.0.0",
+		"db-hafas": "^5.0.2",
 		"hafas-estimate-station-weight": "^2.0.0"
 	},
 	"devDependencies": {
