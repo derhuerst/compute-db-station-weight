@@ -1,7 +1,7 @@
 {
 	"name": "compute-db-station-weight",
 	"description": "Estimate the weight of a DB station using departures.",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -30,6 +30,10 @@
 	"devDependencies": {
 		"tap-min": "^2.0.0",
 		"tape": "^5.0.0"
+	},
+	"peerDependencies": {
+		"hafas-client": "^5",
+		"db-hafas": "^5"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test.js | tap-min",
