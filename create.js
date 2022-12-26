@@ -1,4 +1,4 @@
-import _createEstimate from 'hafas-estimate-station-weight'
+import {createEstimate as _createEstimate} from 'hafas-estimate-station-weight'
 
 import weights from './lib/weights.js'
 

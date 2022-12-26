@@ -25,16 +25,16 @@
 		"node": ">=18"
 	},
 	"dependencies": {
-		"db-hafas": "^5.0.2",
-		"hafas-estimate-station-weight": "^3.0.0"
+		"db-hafas": "^6.0.0",
+		"hafas-estimate-station-weight": "^4.0.0"
 	},
 	"devDependencies": {
 		"tap-min": "^2.0.0",
 		"tape": "^5.0.0"
 	},
 	"peerDependencies": {
-		"hafas-client": "^5",
-		"db-hafas": "^5"
+		"db-hafas": "^6",
+		"hafas-client": "^6"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev node test.js | tap-min",

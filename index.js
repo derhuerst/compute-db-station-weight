@@ -1,5 +1,5 @@
-import createHafas from 'db-hafas'
-import createEstimate from 'hafas-estimate-station-weight'
+import {createDbHafas as createHafas} from 'db-hafas'
+import {createEstimate} from 'hafas-estimate-station-weight'
 
 import weights from './lib/weights.js'
 

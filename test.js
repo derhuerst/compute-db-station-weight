@@ -1,4 +1,4 @@
-import createDbHafas from 'db-hafas'
+import {createDbHafas} from 'db-hafas'
 import test from 'tape'
 
 import {computeWeight as estimate} from './index.js'
