@@ -1,11 +1,11 @@
-'use strict'
+import createHafas from 'db-hafas'
+import createEstimate from 'hafas-estimate-station-weight'
 
-const createHafas = require('db-hafas')
-const createEstimate = require('hafas-estimate-station-weight')
-
-const weights = require('./lib/weights')
+import weights from './lib/weights.js'
 
 const hafas = createHafas('compute-db-station-weight')
 const estimate = createEstimate(hafas, weights)
 
-module.exports = estimate
+export {
+	estimate as computeWeight,
+}

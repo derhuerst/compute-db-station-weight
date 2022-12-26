@@ -1,16 +1,14 @@
-'use strict'
+import createDbHafas from 'db-hafas'
+import test from 'tape'
 
-const createHafas = require('db-hafas')
-const test = require('tape')
-
-const estimate = require('.')
-const createEstimate = require('./create')
+import {computeWeight as estimate} from './index.js'
+import {createComputeWeight as createEstimate} from './create.js'
 
 const leipzigHbf = '8010205'
 const jenaPararies = '8011956'
 const berzhahn = '8000921'
 
-const hafas = createHafas('compute-db-station-weight test')
+const hafas = createDbHafas('compute-db-station-weight test')
 
 test('estimate: Leipzig Hbf > Jena Paradies', async (t) => {
 	const [

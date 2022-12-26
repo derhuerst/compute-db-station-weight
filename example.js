@@ -1,11 +1,6 @@
-'use strict'
-
-const computeWeight = require('.')
+import {computeWeight} from './index.js'
 
 const leipzigHbf = '8010205'
 
-computeWeight(leipzigHbf)
-.then((weight) => {
-	console.log('weight of Leipzig Hbf is', weight)
-})
-.catch(console.error)
+const weight = await computeWeight(leipzigHbf)
+console.log('weight of Leipzig Hbf is', weight)
