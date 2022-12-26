@@ -1,7 +1,7 @@
 {
 	"name": "compute-db-station-weight",
 	"description": "Estimate the weight of a DB station using departures.",
-	"version": "3.0.2",
+	"version": "4.0.0",
 	"type": "module",
 	"main": "index.js",
 	"files": [
