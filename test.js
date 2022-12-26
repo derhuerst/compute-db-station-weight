@@ -12,48 +12,38 @@ const berzhahn = '8000921'
 
 const hafas = createHafas('compute-db-station-weight test')
 
-test('estimate: Leipzig Hbf > Jena Paradies', (t) => {
-	Promise.all([
+test('estimate: Leipzig Hbf > Jena Paradies', async (t) => {
+	const [
+		leipzigHbfWeight,
+		jenaParariesWeight,
+	] = await Promise.all([
 		estimate(leipzigHbf),
 		estimate(jenaPararies)
 	])
-	.then(([leipzigHbfWeight, jenaParariesWeight]) => {
-		t.ok(leipzigHbfWeight > jenaParariesWeight)
-		t.end()
-	})
-	.catch(t.ifError)
+	t.ok(leipzigHbfWeight > jenaParariesWeight)
 })
 
-test('estimate: Berzhahn > 0', (t) => {
-	estimate(berzhahn)
-	.then((weight) => {
-		t.ok(weight > 0)
-		t.end()
-	})
-	.catch(t.ifError)
+test('estimate: Berzhahn > 0', async (t) => {
+	const weight = await estimate(berzhahn)
+	t.ok(weight > 0)
 })
 
-test('createEstimate: Leipzig Hbf > Jena Paradies', (t) => {
+test('createEstimate: Leipzig Hbf > Jena Paradies', async (t) => {
 	const estimate = createEstimate(hafas)
 
-	Promise.all([
+	const [
+		leipzigHbfWeight,
+		jenaParariesWeight,
+	] = await Promise.all([
 		estimate(leipzigHbf),
 		estimate(jenaPararies)
 	])
-	.then(([leipzigHbfWeight, jenaParariesWeight]) => {
-		t.ok(leipzigHbfWeight > jenaParariesWeight)
-		t.end()
-	})
-	.catch(t.ifError)
+	t.ok(leipzigHbfWeight > jenaParariesWeight)
 })
 
-test('createEstimate: Berzhahn > 0', (t) => {
+test('createEstimate: Berzhahn > 0', async (t) => {
 	const estimate = createEstimate(hafas)
 
-	estimate(berzhahn)
-	.then((weight) => {
-		t.ok(weight > 0)
-		t.end()
-	})
-	.catch(t.ifError)
+	const weight = await estimate(berzhahn)
+	t.ok(weight > 0)
 })
